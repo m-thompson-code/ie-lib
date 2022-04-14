@@ -1,0 +1,42 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "a1c698a0-78fb-41bb-bf69-7cbdae3a8dd7"
+  },
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "ie-lib": {
+      "projectType": "library",
+      "root": "projects/ie-lib",
+      "sourceRoot": "projects/ie-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ie-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ie-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ie-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ie-lib/src/test.ts",
+            "tsConfig": "projects/ie-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/ie-lib/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ie-lib"
+}
